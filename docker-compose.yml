@@ -1,0 +1,37 @@
+services:
+  app:
+    image: serversideup/php:8.1-fpm-nginx 
+    container_name: laravel_app
+    volumes:
+      - .:/var/www/html 
+    ports:
+      - "8081:80"           
+    environment:
+      - DOCROOT=/var/www/html/public
+      - SSL_MODE=off
+      - NGINX_LISTEN_PORT=80
+      - NGINX_HTTP_PORT=80
+    depends_on:
+      - db
+    networks:
+      - laravel
+
+  db:
+    image: postgres:15        
+    container_name: laravel_db
+    environment:
+      POSTGRES_DB: laravel
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5432:5432"           
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - laravel
+
+volumes:
+  db_data:
+
+networks:
+  laravel:
