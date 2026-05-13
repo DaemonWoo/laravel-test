@@ -22,7 +22,7 @@ class EditWorker extends Component
         'password' => 'required',
     ];
 
-    public function mount($id)
+    public function mount($id): void
     {
         $this->workerId = $id;
     }

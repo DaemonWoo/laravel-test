@@ -34,9 +34,7 @@ class CreateWorker extends Component
             'role_id' => 1,
         ]);
         SendWorkerCreatedEmail::dispatch($newWorker);
-        //$newWorker->notify(new WorkerCreatedNotification());
 
-        //Mail::to("testlibrary@teml.net")->send(new \App\Mail\CreateWorker($this->name));
         return redirect()->intended(route('workers'))->with('status', 'Worker added successfully!');
     }
 

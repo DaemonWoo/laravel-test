@@ -14,13 +14,13 @@ class BooksComponent extends Component
 
     public $currentUrl;
 
-    public function deleteBook($id)
+    public function deleteBook($id): void
     {
         Book::destroy($id);
         $this->resetPage();
     }
 
-    public function mount()
+    public function mount(): void
     {
         $this->currentUrl = url()->current();
     }

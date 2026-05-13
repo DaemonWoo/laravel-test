@@ -22,7 +22,7 @@ class BookComponent extends Component
         $this->bookId = $id;
     }
 
-    public function addComment($book_id)
+    public function addComment($book_id): void
     {
         Comment::create([
             'text' => $this->commentText,
@@ -31,7 +31,7 @@ class BookComponent extends Component
         ]);
     }
 
-    public function deleteComment($id)
+    public function deleteComment($id): void
     {
         Comment::destroy($id);
     }

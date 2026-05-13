@@ -8,12 +8,11 @@ use Livewire\Component;
 
 class WorkersList extends Component
 {
-    public function deleteWorker($id)
+    public function deleteWorker($id): void
     {
         if (Auth::user()->id !== $id) {
             User::destroy($id);
         }
-
     }
 
     public function render()

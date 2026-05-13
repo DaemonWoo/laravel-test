@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ParseBooksJob implements ShouldQueue
 {
@@ -23,9 +24,8 @@ class ParseBooksJob implements ShouldQueue
     /**
      * Execute the job.
      */
-    use Maatwebsite\Excel\Facades\Excel;
 
-    public function handle()
+    public function handle(): void
     {
         $chunkSize = 100;
 
