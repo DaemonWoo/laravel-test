@@ -33,19 +33,19 @@ php artisan key:generate
 # 5. Запустить контейнеры
 docker-compose up -d
 
-# 6. Установить JS-зависимости
+# 6. Выполнить миграции и сидеры
+docker-compose exec app php artisan migrate --seed
+
+# 7. Установить JS-зависимости
 npm install
 
-# 7. Скомпилировать ассеты
-npm run dev        # dev-режим
-# или
-npm run build      # production
+# 8. Запустить фронт
+npm run dev
 
-# 8. Выполнить миграции и сидеры
-docker-compose exec app php artisan migrate --seed
+ 
 
 ## Учётные записи (после migrate --seed)
 
 | Роль          | Email                  | Пароль   |
 | ------------- | ---------------------- | -------- |
-| Администратор | <admin@domain.com>    | 123456 |
+| Администратор | <admin@domain.com>     | 123456   |
